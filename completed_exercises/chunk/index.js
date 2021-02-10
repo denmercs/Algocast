@@ -11,14 +11,25 @@
 function chunk(array, size) {
   let chunked = [];
 
-  for (let element of array) {
+  // first solution
+  /*
+  for (let elem of array) {
     let last = chunked[chunked.length - 1];
 
     if (!last || last.length === size) {
-      chunked.push([element]);
+      chunked.push([elem]);
     } else {
-      last.push(element);
+      last.push(elem);
     }
+  }
+  */
+
+  // second solution
+  let index = 0;
+
+  while (index < array.length) {
+    chunked.push(array.slice(index, index + size));
+    index += size;
   }
 
   return chunked;
